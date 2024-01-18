@@ -30,7 +30,7 @@ There are a few different ways you could use this action; here is an example of 
 ```yaml
 jobs:
   GetVersion:
-    uses: mod-posh/GetProjectVersion@v0.0.1.5
+    uses: mod-posh/GetProjectVersion@v0.0.1.6
     with:
       Filename: '"MyModule.psd1"'
       verbose: 'verbose'

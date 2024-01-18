@@ -4,18 +4,15 @@ param (
 try {
  $ErrorActionPreference = 'Stop';
  $Error.Clear();
-
- if ($verbose.ToLower() -eq 'verbose')
- {
-  Write-Host "GetProjectVersion DEBUG"
-  Write-Host "Filename   : $($Filename)"
- }
+ $verbose = $env:VERBOSE
 
  $runnerPath = $env:GITHUB_WORKSPACE
  $sourcePath = Join-Path -Path $runnerPath -ChildPath $FileName
 
  if ($verbose.ToLower() -eq 'verbose')
  {
+  Write-Host "GetProjectVersion DEBUG"
+  Write-Host "Filename   : $($Filename)"
   Write-Host "RunnerPath : $($runnerPath)"
   Write-Host "SourcePath : $($sourcePath)"
  }
@@ -47,6 +44,6 @@ try {
 
  return $Version
 } catch {
- $_.InvocationInfo | ConvertTo-Json -d 9
- throw $_.Exception;
+ $_.InvocationInfo | Out-String
+ throw $_.Exception.Message;
 }
