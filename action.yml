@@ -31,5 +31,3 @@ runs:
         echo "::set-output name=Version::$Version"
       shell: pwsh
       id: GetProjectVersion
-outputs:
-  version: ${{ steps.GetProjectVersion.outputs.Version }}
