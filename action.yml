@@ -1,0 +1,35 @@
+name: 'GetProjectVersion'
+description: 'Get the current version of your project'
+author: 'Jeff Patton'
+
+branding:
+  icon: 'bell'
+  color: 'blue'
+
+inputs:
+  Filename:
+    description: 'The filename of the project or relative path to the project file'
+    required: true
+    type: string
+  verbose:
+    description: "A value of verbose will output additional information"
+    required: false
+    type: string
+    default: 'None'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Get Project Version
+      env:
+          VERBOSE: ${{ inputs.verbose }}
+      run: |
+        $Version = & $env:GITHUB_ACTION_PATH\\getprojectversion.ps1 -Filename ${{ inputs.Filename }}
+        echo "::set-output name=Version::$Version"
+      shell: pwsh
+      id: GetProjectVersion
+  outputs:
+    version: ${{ steps.GetProjectVersion.outputs.Version }}
