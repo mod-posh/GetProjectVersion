@@ -28,6 +28,6 @@ runs:
           VERBOSE: ${{ inputs.verbose }}
       run: |
         $Version = & $env:GITHUB_ACTION_PATH\\getprojectversion.ps1 -Filename ${{ inputs.Filename }}
-        echo "::set-output name=Version::$Version"
+        echo "{Version}={$Version}" >> $GITHUB_OUTPUT
       shell: pwsh
       id: GetProjectVersion

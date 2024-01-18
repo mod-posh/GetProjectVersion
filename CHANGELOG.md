@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [[0.0.1.7]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.1.7) - 2024-01-18
+
+Warning: The `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see: [GitHub Actions: Deprecating save-state and set-output commands](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
+
+### Unsupported
+
+```yml
+- name: Set output
+run: echo "::set-output name={name}::{value}"
+```
+
+### Supported
+
+```yml
+- name: Set output
+run: echo "{name}={value}" >> $GITHUB_OUTPUT
+```
+
+What's Changed:
+
+1. Updated action.yml with new output format
+
+---
+
 ## [[0.0.1.6]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.1.6) - 2024-01-18
 
 BUGFIX: Wasn't capturing env:VERBOSE
