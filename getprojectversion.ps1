@@ -4,17 +4,23 @@ param (
 try {
  $ErrorActionPreference = 'Stop';
  $Error.Clear();
- $sourcePath = $env:GITHUB_WORKSPACE
-
 
  if ($verbose.ToLower() -eq 'verbose')
  {
   Write-Host "GetProjectVersion DEBUG"
   Write-Host "Filename   : $($Filename)"
+ }
+
+ $runnerPath = $env:GITHUB_WORKSPACE
+ $sourcePath = Join-Path -Path $runnerPath -ChildPath $FileName
+
+ if ($verbose.ToLower() -eq 'verbose')
+ {
+  Write-Host "RunnerPath : $($runnerPath)"
   Write-Host "SourcePath : $($sourcePath)"
  }
 
- $File = Get-Item -Path (Join-Path -Path $sourcePath -ChildPath $FileName)
+ $File = Get-Item -Path $sourcePath
  switch ($File.Extension)
  {
   '.csproj'

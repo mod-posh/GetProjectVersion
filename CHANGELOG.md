@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [[0.0.1.4]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.1.4) - 2024-01-18
+
+BUGFIX: Script is erroring out early on, moving some verbose statements around
+
+---
+
 ## [[0.0.1.3]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.1.3) - 2024-01-18
 
 BUGFIX: Outputs are not available in composite actions
