@@ -47,6 +47,6 @@ try {
 
  return $Version
 } catch {
- $_.InvocationInfo | Out-String;
- throw $_.Exception.Message;
+ $_.InvocationInfo | ConvertTo-Json -d 9
+ throw $_.Exception;
 }
