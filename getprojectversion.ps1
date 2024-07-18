@@ -43,7 +43,7 @@ try
   Write-Host "Version    : $($Version)"
  }
 
- Write-Output $Version
+ Write-Output "::set-output name=Version::$($Version)"
 }
 catch
 {
