@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [[0.0.2.2]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.2.2) - 2024-07-17
+
+Set-Output has been deprecated, so switched to using env files
+
+Warning: The `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see: [GitHub Actions: Deprecating save-state and set-output commands](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/)
+
 ## [[0.0.2.1]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.2.1) - 2024-07-17
 
 There was a problem with accessing the output of the action, this should be resolved with this release.
