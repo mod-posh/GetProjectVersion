@@ -20,14 +20,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-
     - name: Get Project Version
       env:
-          VERBOSE: ${{ inputs.verbose }}
+        VERBOSE: ${{ inputs.verbose }}
       run: |
-        $Version = & $env:GITHUB_ACTION_PATH\\getprojectversion.ps1 -Filename ${{ inputs.Filename }}
-        echo "{Version}={$Version}" >> $GITHUB_OUTPUT
+        $Version = & "$env:GITHUB_ACTION_PATH/getprojectversion.ps1" -Filename "${{ inputs.Filename }}"
+        echo "Version=$Version" >> $GITHUB_ENV
       shell: pwsh
       id: GetProjectVersion

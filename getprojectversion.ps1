@@ -1,13 +1,14 @@
 param (
  [string]$Filename
 )
-try {
+try
+{
  $ErrorActionPreference = 'Stop';
  $Error.Clear();
  $verbose = $env:VERBOSE
 
  $runnerPath = $env:GITHUB_WORKSPACE
- $sourcePath = Join-Path -Path $runnerPath -ChildPath $FileName
+ $sourcePath = Join-Path -Path $runnerPath -ChildPath $Filename
 
  if ($verbose.ToLower() -eq 'verbose')
  {
@@ -42,8 +43,10 @@ try {
   Write-Host "Version    : $($Version)"
  }
 
- return $Version
-} catch {
+ Write-Output $Version
+}
+catch
+{
  $_.InvocationInfo | Out-String
  throw $_.Exception.Message;
 }
