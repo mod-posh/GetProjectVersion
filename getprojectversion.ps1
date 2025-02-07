@@ -1,22 +1,28 @@
 param (
     [string]$Filename
 )
+
 try {
     $ErrorActionPreference = 'Stop';
     $Error.Clear();
     $verbose = $env:VERBOSE
 
     $runnerPath = $env:GITHUB_WORKSPACE
-    $sourcePath = Join-Path -Path $runnerPath -ChildPath $Filename
+
+    # Search for the file recursively within the runner path
+    $File = Get-ChildItem -Path $runnerPath -Recurse -Filter $Filename -File | Select-Object -First 1
+
+    if (-not $File) {
+        throw "File '$Filename' not found in $runnerPath"
+    }
 
     if ($verbose.ToLower() -eq 'verbose') {
         Write-Host "GetProjectVersion DEBUG"
         Write-Host "Filename   : $($Filename)"
         Write-Host "RunnerPath : $($runnerPath)"
-        Write-Host "SourcePath : $($sourcePath)"
+        Write-Host "SourcePath : $($File.FullName)"
     }
 
-    $File = Get-Item -Path $sourcePath
     switch ($File.Extension) {
         '.csproj' {
             $Project = [xml](Get-Content -Path $File.FullName);
