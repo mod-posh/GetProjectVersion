@@ -16,7 +16,7 @@ You can trigger the `action.yml` by `workflow_call` to post a notification autom
 
 ### Workflow Inputs
 
-- `Filename`: If the file is in the root of the repository, it's just the filename, project.csproj. If the file is inside a folder, it's the relative path to that file, MyProject\project.psd1
+- `Filename`: The filename, project.csproj.
 - `verbose`: A value of verbose will output additional information
 
 ## PowerShell Script (`getprojectversion.ps1`)
@@ -30,7 +30,7 @@ There are a few different ways you could use this action; here is an example of 
 ```yaml
 jobs:
   GetVersion:
-    uses: mod-posh/GetProjectVersion@v0.0.1.7
+    uses: mod-posh/GetProjectVersion@v0.0.3.0
     with:
       Filename: '"MyModule.psd1"'
       verbose: 'verbose'
