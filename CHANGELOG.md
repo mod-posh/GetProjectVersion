@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [[0.0.3.0]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.3.0) - 2025-02-07
+
+Recursively find the csproj or psd1 file
+
 ## [[0.0.2.2]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.2.2) - 2024-07-17
 
 Set-Output has been deprecated, so switched to using env files
