@@ -9,18 +9,18 @@ try {
 
     $runnerPath = $env:GITHUB_WORKSPACE
 
-    # Search for the file recursively within the runner path
-    $File = Get-ChildItem -Path $runnerPath -Recurse -Filter $Filename -File | Select-Object -First 1
-
-    if (-not $File) {
-        throw "File '$Filename' not found in $runnerPath"
-    }
-
     if ($verbose.ToLower() -eq 'verbose') {
         Write-Host "GetProjectVersion DEBUG"
         Write-Host "Filename   : $($Filename)"
         Write-Host "RunnerPath : $($runnerPath)"
         Write-Host "SourcePath : $($File.FullName)"
+    }
+
+    # Search for the file recursively within the runner path
+    $File = Get-ChildItem -Path $runnerPath -Recurse -Filter $Filename -File | Select-Object -First 1
+
+    if (-not $File) {
+        throw "File '$Filename' not found in $runnerPath"
     }
 
     switch ($File.Extension) {
@@ -31,6 +31,10 @@ try {
         '.psd1' {
             $Manifest = Test-ModuleManifest -Path $File.FullName -ErrorAction SilentlyContinue
             $Version = $Manifest.Version.ToString()
+        }
+        '.props' {
+            $Props = [xml](Get-Content -Path $File.FullName);
+            $Version = $Props.Project.PropertyGroup.Version.ToString();
         }
         default {
             throw "The extension, $($File.Extension) is not currently a supported type, please create an issue to address this"

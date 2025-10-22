@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [[0.0.4.0]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.4.0) - 2025-10-22
+
+Updated the code to use Directory.Build.props files for solutions with multiple projects
+
+Moved the verbose variable output to the top as it wasn't showing up
+
+---
+
 ## [[0.0.3.0]](https://github.com/mod-posh/GetProjectVersion/releases/tag/v0.0.3.0) - 2025-02-07
 
 Recursively find the csproj or psd1 file
