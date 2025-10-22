@@ -14,6 +14,9 @@ try {
         Write-Host "Filename   : $($Filename)"
         Write-Host "RunnerPath : $($runnerPath)"
         Write-Host "SourcePath : $($File.FullName)"
+        Write-Host "-----------------------------"
+        (Get-ChildItem -Path $runnerPath -Recurse).FullName
+        Write-Host "-----------------------------"
     }
 
     # Search for the file recursively within the runner path
